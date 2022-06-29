@@ -42,7 +42,7 @@ console.log(fifth);
 /**
  * TODO create variable named human and set value as object with key firstName and value "John"
  */
- let human = {
+let human = {
   firstName: "John"
 };
 console.log(human);
