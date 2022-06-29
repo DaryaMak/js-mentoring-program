@@ -27,7 +27,7 @@ console.log(str2);
 /**
  * TODO create variable named bool and set value of equality comparison of int and int2 variables
  */
-let bool = int == int2;
+let bool = int === int2;
 console.log(bool);
 /**
  * TODO create variable named arr and set value array of numbers from 1 to 5
@@ -51,15 +51,14 @@ console.log(human);
 /**
  * TODO set new key of human object named lastName and value "Dou"
  */
-let var2 = "Dou"
-human['lastName'] = var2;
+human.lastName = "Dou";
 console.log(human);
 /**
  * TODO set new key of human object named fullName and value of concatenation of firstName and lastName values
  */
-let var3 = `${human.firstName} ${human.lastName}`;
-human['fullName'] = var3;
+human.fullName = human.firstName + " " + human.lastName;
 console.log(human);
+
 module.exports = {
   int,
   int2,
