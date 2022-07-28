@@ -8,14 +8,14 @@
  */
  const x = 3;
  const y = 7;
- let z1 = x + y;
- let z2 = x * y;
 
  if (y < 10) {
-    console.log(z1);
-};
+ z1 = x + y;
+} else {
+ z2 = x * y;
+}
+z2 = (y < 10) ? x + y : x * y; 
 
-(y >= 10) ? console.log(z2) : console.log(z1);
 
 
 
@@ -31,25 +31,20 @@ const alpha = 3;
 const beta = 7;
 const operator = "add";
 switch (operator) {
-  case operator === "add":
+  case "add":
     task2 == alpha + beta;
-    console.log(task2);
     break;
-  case operator === "subtract":
+  case "subtract":
     task2 == alpha - beta;
-    console.log(task2);
     break;
-  case operator === "multiply":
+  case "multiply":
     task2 == alpha * beta;
-    console.log(task2);
     break;    
-  case operator === "divide":
+  case "divide":
     task2 == alpha / beta;
-    console.log(task2);
     break;
-  case operator === "wrong":
+  case "wrong":
     task2 == "Sorry, such operator doesn't exist";
-    console.log(task2);
     break;
 };
 
@@ -69,16 +64,13 @@ const redemption = 420;
 let discount;
 
 if (redemption >=0 && redemption <= 350) {
-    discount === 0;
-    console.log(discount);
+    discount = 0;
 } else if (redemption >= 351 && redemption >= 1350) {
-    discount === 15;
-    console.log(discount);
+    discount = 15;
 } else if (redemption >= 1351 && redemption >= 2700) {
-    discount === 30;
-    console.log(discount);
+    discount = 30;
 } else if (redemption >= 2701 && redemption <= 6500) {
-    discount === 45;
+    discount = 45;
 };
 
 module.exports = {
