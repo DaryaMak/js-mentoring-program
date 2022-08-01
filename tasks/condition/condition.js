@@ -16,9 +16,6 @@
 }
 z2 = (y < 10) ? x + y : x * y; 
 
-
-
-
 /** Task: 2
  * The system receives 3 params - alpha, beta, operator.
  * Operator can pass 4 possible values - "add", "subtract", "multiply", "divide".
@@ -47,7 +44,6 @@ switch (operator) {
     task2 = "Sorry, such operator doesn't exist";
     break;
 };
-console.log(task2);
 
 
 /**
