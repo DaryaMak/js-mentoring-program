@@ -32,21 +32,22 @@ const beta = 7;
 const operator = "add";
 switch (operator) {
   case "add":
-    task2 == alpha + beta;
+    task2 = alpha + beta;
     break;
   case "subtract":
-    task2 == alpha - beta;
+    task2 = alpha - beta;
     break;
   case "multiply":
-    task2 == alpha * beta;
+    task2 = alpha * beta;
     break;    
   case "divide":
-    task2 == alpha / beta;
+    task2 = alpha / beta;
     break;
   case "wrong":
-    task2 == "Sorry, such operator doesn't exist";
+    task2 = "Sorry, such operator doesn't exist";
     break;
 };
+console.log(task2);
 
 
 /**
@@ -60,18 +61,18 @@ switch (operator) {
  * - 2701 - 6500: 45
  * assign the result to the 'discount' variable
  */
-const redemption = 420;
+const redemption = 352;
 let discount;
-
-if (redemption >=0 && redemption <= 350) {
+if (redemption >= 0 && redemption <= 350) {
     discount = 0;
-} else if (redemption >= 351 && redemption >= 1350) {
+} else if (redemption >= 351 && redemption <= 1350) {
     discount = 15;
-} else if (redemption >= 1351 && redemption >= 2700) {
+} else if (redemption >= 1351 && redemption <= 2700) {
     discount = 30;
 } else if (redemption >= 2701 && redemption <= 6500) {
     discount = 45;
 };
+console.log(discount);
 
 module.exports = {
     z1,
