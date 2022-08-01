@@ -6,11 +6,15 @@
  * Task 1 - if else - z1 : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else
  * Task 2 - ternary operator - z2: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator
  */
-let z1;
-let z2;
-const x = 3;
-const y = 7;
+ const x = 3;
+ const y = 7;
 
+ if (y < 10) {
+ z1 = x + y;
+} else {
+ z2 = x * y;
+}
+z2 = (y < 10) ? x + y : x * y; 
 
 /** Task: 2
  * The system receives 3 params - alpha, beta, operator.
@@ -23,6 +27,23 @@ let task2;
 const alpha = 3;
 const beta = 7;
 const operator = "add";
+switch (operator) {
+  case "add":
+    task2 = alpha + beta;
+    break;
+  case "subtract":
+    task2 = alpha - beta;
+    break;
+  case "multiply":
+    task2 = alpha * beta;
+    break;    
+  case "divide":
+    task2 = alpha / beta;
+    break;
+  case "wrong":
+    task2 = "Sorry, such operator doesn't exist";
+    break;
+};
 
 
 /**
@@ -36,8 +57,17 @@ const operator = "add";
  * - 2701 - 6500: 45
  * assign the result to the 'discount' variable
  */
-const redemption = 420;
+const redemption = 352;
 let discount;
+if (redemption >= 0 && redemption <= 350) {
+    discount = 0;
+} else if (redemption >= 351 && redemption <= 1350) {
+    discount = 15;
+} else if (redemption >= 1351 && redemption <= 2700) {
+    discount = 30;
+} else if (redemption >= 2701 && redemption <= 6500) {
+    discount = 45;
+};
 
 
 module.exports = {
