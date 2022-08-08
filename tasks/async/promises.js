@@ -6,6 +6,7 @@ const {
 	secondPromise
 } = require("./utils/utilPromises");
 
+
 /**
  * Task-1: Create a promise with the resolve state
  * Implement a promise what will be resolved with "Resolved!" string
@@ -14,8 +15,10 @@ const {
  */
 
 function promiseResolve() {
-	//PLACE YOUR CODE HERE:
+	return new Promise((resolve, reject) =>
+	resolve('Resolved!'));
 }
+
 
 /**
  * Task-2: Create a promise with the reject state
@@ -25,7 +28,8 @@ function promiseResolve() {
  */
 
 function promiseReject() {
-	//PLACE YOUR CODE HERE:
+	return new Promise((resolve, reject) => 
+	reject('Rejected!'));
 }
 
 /**
@@ -35,8 +39,14 @@ function promiseReject() {
  */
 
 function fullPromise(param) {
-	//PLACE YOUR CODE HERE:
-}
+	return new Promise((resolve, reject) => {
+		if(param === true) {
+		  resolve('Resolved!');
+		} else if(param === false) {
+		  reject('Rejected!');
+		}
+	  });
+	}
 
 /**
  * Task-4: Chain two promises (firstPromise() and secondPromise()
@@ -45,12 +55,21 @@ function fullPromise(param) {
  * variable 'chainingResult' = 'Promises chained';
  * Please do the chaining inside of the promisesChaining function
  */
-let chainingResult = '';
+
 
 async function promisesChaining() {
-	//PLACE YOUR CODE HERE:
+	const firstWord = secondPromise()
+    .then(data => {
+        console.log(data);
+    });
+	const secondWord = firstPromise()
+	.then(data => {
+        console.log(data);
+    });
+	return firstWord + secondWord;
 }
-
+let chainingResult = '${firstWord} + " " + ${secondWord}';	
+console.log(chainingResult);
 
 /**
  * Task-5: Implement a function getAnimals() that will return the result of
@@ -61,7 +80,12 @@ async function promisesChaining() {
  */
 
 async function getAnimals() {
-	//PLACE YOUR CODE HERE:
+    const promise1 = getDogs();
+	const promise2 = getCats();
+	const promise3 = getBirds();
+	return Promise.all([promise1, promise2, promise3]).then(function(values) {
+		console.log(values)
+	   });
 }
 
 module.exports = {

@@ -21,8 +21,11 @@ const {
  * @returns {Promise<"Resolved! with async await">}
  * 
  */
+
+const newResolvedFunction = new Promise(resolve => resolve("Resolved! with async await"));
 async function asyncPromiseResolve() {
-  //PLACE YOUR CODE HERE:
+  const result = await newResolvedFunction;
+  return result; 
 }
 
 /**
@@ -31,8 +34,11 @@ async function asyncPromiseResolve() {
  * and modify the message to -> Rejected! with async await
  * @returns {Promise<"Rejected! with async await">}
  */
+
+const newRejectedFunction = new Promise(reject => reject("Rejected! with async await"));
 async function asyncPromiseReject() {
-  //PLACE YOUR CODE HERE:
+  const result = await newRejectedFunction;
+  return result; 
 }
 
 /**
@@ -41,9 +47,14 @@ async function asyncPromiseReject() {
  * using async/await syntax
  * @returns 
  */
+ 
 async function asyncPromiseAll() {
-  //PLACE YOUR CODE HERE:
-}
+    let promise1 = getDogs();
+    let promise2 = getCats();
+    let promise3 = getBirds();
+    let values = await Promise.all([promise1, promise2, promise3]);
+    return values; 
+   }
 
 module.exports = {
   asyncPromiseResolve,
