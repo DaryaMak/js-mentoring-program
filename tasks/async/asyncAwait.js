@@ -22,11 +22,12 @@ const {
  * 
  */
 
-const newResolvedFunction = new Promise(resolve => resolve("Resolved! with async await"));
 async function asyncPromiseResolve() {
-  const result = await newResolvedFunction;
-  return result; 
+  const resolved = await promiseResolve();
+  return `${resolved} with async await`;
 }
+
+asyncPromiseResolve()
 
 /**
  * TASK-2: Reject the created earlier promiseReject() promise
@@ -35,11 +36,15 @@ async function asyncPromiseResolve() {
  * @returns {Promise<"Rejected! with async await">}
  */
 
-const newRejectedFunction = new Promise(reject => reject("Rejected! with async await"));
 async function asyncPromiseReject() {
-  const result = await newRejectedFunction;
-  return result; 
+  try {
+    const error = await promiseReject();
+  } catch (err) {
+    return `${err} with async await`;
+   }
 }
+
+asyncPromiseReject()
 
 /**
  * TASK-3: Return the result of 3 promises: 

@@ -79,14 +79,15 @@ console.log(chainingResult);
  * hint: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all
  */
 
-async function getAnimals() {
-    const promise1 = getDogs();
-	const promise2 = getCats();
-	const promise3 = getBirds();
-	return Promise.all([promise1, promise2, promise3]).then(function(values) {
-		console.log(values)
-	   });
+const promise1 = getDogs();
+const promise2 = getCats();
+const promise3 = getBirds();
+const getAnimals = async function () {
+	return Promise.all([promise1, promise2, promise3]);
 }
+getAnimals().then(data => {
+	console.log(data);
+});
 
 module.exports = {
 	promiseResolve,
