@@ -50,7 +50,7 @@ function getShortest(wordArray) {
 			   shortest = wordArray[i]; 
 		}
 	}
-
+}
 /**
  * write function that returns word google with given numbers of "o" symbols
  * @example
@@ -116,14 +116,11 @@ function getTotalPath(path) {
  */
 
 function discountFunction(percentage) {
-    let amount = n;
-	let discount = n / percentage * 100;
-	let totalSum = n - discount;
-	return function () {
-	  console.log(totalSum);
-	};
-}
-const payment = discountFunction(50);
+    return function(amount) {
+		return amount -= amount * percentage / 100;
+	}};
+
+const payment = discountFunction(10);
 console.log(payment);
 
 /**
@@ -144,7 +141,7 @@ const myObject = {
 		  }
 	},
 	call() {
-		     return("My name is" + this.name + this.lastName + "and I am " + this.age + "years old. My best friend is " + this.friends[2]);
+		     return("My name is " + this.name + " " + this.lastName + " and I am " + this.age + " years old. My best friend is " + this.friends[2]);
 		}
 
 };
@@ -159,4 +156,4 @@ module.exports = {
 	getTotalPath,
 	discountFunction,
 	myObject
-};
+}
