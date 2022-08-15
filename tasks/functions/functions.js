@@ -121,7 +121,7 @@ function discountFunction(percentage) {
 	}};
 
 const payment = discountFunction(10);
-console.log(payment);
+
 
 /**
  * Write the methods inside the given objects that:
