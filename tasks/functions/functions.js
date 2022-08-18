@@ -12,6 +12,8 @@
 function sum(a, b) {
   return a + b;
 }
+const total = sum(12, 16);
+console.log(total);
 
 /**
  * write function that returns firstName and lastName of a given object
@@ -35,8 +37,7 @@ const fullName = getFullName ({
 function isOdd(n) {
 	return n % 2 == 0;
 }
-
-
+ 
 /**
  * write function that returns shortest of the words in the given array
  * @example
@@ -51,6 +52,7 @@ function getShortest(wordArray) {
 		}
 	}
 }
+
 /**
  * write function that returns word google with given numbers of "o" symbols
  * @example
@@ -62,6 +64,7 @@ function getShortest(wordArray) {
     let str1 = "g" + str0.repeat(n) + "gle"; 
     return str1; 
 }
+const word = getGoogle(3);
 
 /**
  * write function that returns object based on the given information 
@@ -90,11 +93,24 @@ const user = getUser("John", "Dou", 42);
  * e.g [{direction: "Kiyv - Minsk", distance: 567}, {direction: "Kiyv - Paris", distance: 2402}]
  */
 
+
 const totalPath = [
 	{"direction": "Minsk-Belostok", "distance": 347},
 	{"direction": "Belostok-Warsaw", "distance": 199},
 	{"direction": "Warsaw-Katowice", "distance": 295}
 ];
+
+function getTotalPath(p) {
+		let sumDist = 0;
+		let n = p.length;
+		for (let i = 0; i < n; i++) {
+         sumDist = sumDist + p[i].distance;
+		};
+        return sumDist
+	}
+result = getTotalPath(totalPath);
+
+
 function getTotalPath(path) {
 	let totalPath = 0;
 	for (let i = 0; i < path.length; i ++) {
@@ -137,11 +153,9 @@ const myObject = {
 	friends: ['Mike', 'Alan', 'Daniel'],
 	keys() {
 		for (const property in myObject) {
-			return (`${property}: ${myObject[property]}`);
-		  }
-	},
 	call() {
 		     return("My name is " + this.name + " " + this.lastName + " and I am " + this.age + " years old. My best friend is " + this.friends[2]);
+
 		}
 
 };
