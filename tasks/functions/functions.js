@@ -29,23 +29,15 @@ const fullName = getFullName ({
 	    firstName: "John",
 	    lastName: "Dou",
 	 });
-console.log(fullName);
+
 /**
  * write fuction that checks if number is odd
  * true if odd, false if even
  */
 function isOdd(n) {
- if(n % 2 == 0) {
-		console.log("false");
-	}
-	else {
-		console.log("true");
-	}
+	return n % 2 == 0;
 }
- const answer = isOdd(2);
-console.log(answer);
-
-
+ 
 /**
  * write function that returns shortest of the words in the given array
  * @example
@@ -53,27 +45,13 @@ console.log(answer);
  */
 
 function getShortest(wordArray) {
-let shortest = '';
-    if(wordArray.length > 0){
-         for(let i = 0; i < wordArray.length; i++){
-           if(typeof wordArray[i] === 'string')
-             {
-               if(shortest.length == 0) {
-                   shortest = wordArray[i]; continue;
-               } 
-               if(wordArray[i].length < shortest.length){
-                   shortest = wordArray[i]; 
-               }
-            }
-          }
-         }
-          return shortest; 
-       }
-       
-       const output = getShortest(["one", "two", "three"]);
-console.log(output);
-
-
+	let shortest = wordArray[0];
+    for(let i = 1; i < wordArray.length; i++){
+	   if(wordArray[i].length < shortest.length){
+			   shortest = wordArray[i]; 
+		}
+	}
+}
 
 /**
  * write function that returns word google with given numbers of "o" symbols
@@ -82,12 +60,12 @@ console.log(output);
  */
 
  function getGoogle(n) { 
-    let str0 = "g"; 
-    let str1 = str0.padEnd((n+1),"o") + "gle"; 
+    let str0 = "o"; 
+    let str1 = "g" + str0.repeat(n) + "gle"; 
     return str1; 
 }
 const word = getGoogle(3);
-console.log(word);
+
 /**
  * write function that returns object based on the given information 
  * (params may be null, so, please use default ones)
@@ -108,19 +86,20 @@ function getUser(firstName = null, lastName = null, age = null) {
     };
 }
 const user = getUser("John", "Dou", 42);
-console.log(user);
+
 /**
  * write function that calculates total path traveled.
  * path represented as array of objects with field distance and direction
  * e.g [{direction: "Kiyv - Minsk", distance: 567}, {direction: "Kiyv - Paris", distance: 2402}]
  */
 
- 
+
 const totalPath = [
 	{"direction": "Minsk-Belostok", "distance": 347},
 	{"direction": "Belostok-Warsaw", "distance": 199},
 	{"direction": "Warsaw-Katowice", "distance": 295}
 ];
+
 function getTotalPath(p) {
 		let sumDist = 0;
 		let n = p.length;
@@ -132,7 +111,14 @@ function getTotalPath(p) {
 result = getTotalPath(totalPath);
 
 
-
+function getTotalPath(path) {
+	let totalPath = 0;
+	for (let i = 0; i < path.length; i ++) {
+		totalPath += path.distance;
+	}
+	return totalPath;
+}
+  
 /**
  * write a function that will calculate a discount considering the Amount
  * and the percentage (hint: you need to use the Closure here)
@@ -146,15 +132,12 @@ result = getTotalPath(totalPath);
  */
 
 function discountFunction(percentage) {
-    let amount = n;
-	let discount = n / percentage * 100;
-	let totalSum = n - discount;
-	return function () {
-	  console.log(totalSum);
-	};
-}
-const payment = discountFunction(50);
-console.log(payment);
+    return function(amount) {
+		return amount -= amount * percentage / 100;
+	}};
+
+const payment = discountFunction(10);
+
 
 /**
  * Write the methods inside the given objects that:
@@ -170,11 +153,9 @@ const myObject = {
 	friends: ['Mike', 'Alan', 'Daniel'],
 	keys() {
 		for (const property in myObject) {
-			console.log(`${property}: ${myObject[property]}`);
-		  }
-	},
 	call() {
-		     console.log("My name is" + this.name + this.lastName + "and I am " + this.age + "years old. My best friend is " + this.friends[2]);
+		     return("My name is " + this.name + " " + this.lastName + " and I am " + this.age + " years old. My best friend is " + this.friends[2]);
+
 		}
 
 };
@@ -189,4 +170,4 @@ module.exports = {
 	getTotalPath,
 	discountFunction,
 	myObject
-};
+}
