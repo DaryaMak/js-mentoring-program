@@ -40,14 +40,14 @@ function promiseReject() {
 
 function fullPromise(param) {
 	return new Promise((resolve, reject) => {
-		if(param === true) {
-		  resolve('Resolved!');
-		} else if(param === false) {
-		  reject('Rejected!');
-		}
+		if (param) {
+			resolve("Resolved!");
+		  } else {
+			reject("Rejected!");
+		  }
 	  });
 	}
-
+	
 /**
  * Task-4: Chain two promises (firstPromise() and secondPromise()
  * from the './utils/utilPromises' file) 
@@ -58,18 +58,15 @@ function fullPromise(param) {
 
 
 async function promisesChaining() {
-	const firstWord = secondPromise()
-    .then(data => {
-        console.log(data);
-    });
-	const secondWord = firstPromise()
-	.then(data => {
-        console.log(data);
-    });
-	return firstWord + secondWord;
+	return firstPromise()
+    .then(res => {
+      chainingResult = res;
+      return secondPromise();
+    })
+    .then(res => chainingResult += ` ${res}`);
 }
-let chainingResult = '${firstWord} + " " + ${secondWord}';	
-console.log(chainingResult);
+let chainingResult = '${res}';	
+
 
 /**
  * Task-5: Implement a function getAnimals() that will return the result of
@@ -79,15 +76,11 @@ console.log(chainingResult);
  * hint: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all
  */
 
-const promise1 = getDogs();
-const promise2 = getCats();
-const promise3 = getBirds();
-const getAnimals = async function () {
-	return Promise.all([promise1, promise2, promise3]);
-}
-getAnimals().then(data => {
-	console.log(data);
-});
+ async function getAnimals() {
+	let anmls = [];
+	return Promise.all([getDogs(), getCats(), getBirds()])
+	  .then(animals => anmls.concat(animals[0], animals[1], animals[2]));
+  }
 
 module.exports = {
 	promiseResolve,

@@ -53,13 +53,10 @@ asyncPromiseReject()
  * @returns 
  */
  
-async function asyncPromiseAll() {
-    let promise1 = getDogs();
-    let promise2 = getCats();
-    let promise3 = getBirds();
-    let values = await Promise.all([promise1, promise2, promise3]);
-    return values; 
-   }
+ async function asyncPromiseAll() {
+  const result = await Promise.all([getDogs(), getCats(), getBirds()]);
+  return result;
+}
 
 module.exports = {
   asyncPromiseResolve,
