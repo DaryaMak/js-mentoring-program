@@ -24,9 +24,7 @@ function printCharacterNames(chars) {
  * @return {Array} - non human characters
  */
 function getNonHumanCharacters(chars) {
-	if (species !== "Human") {
-		return console.log(name);
-	}
+	return chars.filter(item => item.species != 'Human');
 }
 
 /**
@@ -36,9 +34,7 @@ function getNonHumanCharacters(chars) {
  * @return {Object} - Jerry object
  */
 function getJerryInfo(chars) {
-	if("name" === "Jerry Smith") {
-		return console.log(name);
-	}
+	return chars.find(array => array.name === 'Jerry Smith');
 }
 
 /**
@@ -47,7 +43,9 @@ function getJerryInfo(chars) {
  * @param {Array} chars
  * @return {boolean}
  */
-function isAllHuman(chars) {}
+function isAllHuman(chars) {
+	return chars.every(array => array.species === 'Human');
+}
 
 /**
  * check if there are any 'type == Fish-Person' characters. return true if any, false if not
@@ -55,7 +53,9 @@ function isAllHuman(chars) {}
  * @param {Array} chars
  * @return {boolean}
  */
-function isAnyFishPerson(chars) {}
+function isAnyFishPerson(chars) {
+	return chars.some(array => array.type === 'Fish-Person');
+}
 
 /**
  * 1. Write a method to find an index of minimal item from an array;
@@ -64,8 +64,9 @@ function isAnyFishPerson(chars) {}
  * @example
  * console.log(minItem([2,5,6,3,1,8])) // 4
  */
-function minItem(arr) {
-	//PLACE YOUR CODE HERE
+ function minItem(arr) {
+	let min = arr.reduce((acc, current) => acc < current ? acc : current);
+	return arr.indexOf(min);
 }
 
 module.exports = {
