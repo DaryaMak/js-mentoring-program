@@ -93,23 +93,11 @@ const user = getUser("John", "Dou", 42);
  * e.g [{direction: "Kiyv - Minsk", distance: 567}, {direction: "Kiyv - Paris", distance: 2402}]
  */
 
-
 const totalPath = [
 	{"direction": "Minsk-Belostok", "distance": 347},
 	{"direction": "Belostok-Warsaw", "distance": 199},
 	{"direction": "Warsaw-Katowice", "distance": 295}
 ];
-
-function getTotalPath(p) {
-		let sumDist = 0;
-		let n = p.length;
-		for (let i = 0; i < n; i++) {
-         sumDist = sumDist + p[i].distance;
-		};
-        return sumDist
-	}
-result = getTotalPath(totalPath);
-
 
 function getTotalPath(path) {
 	let totalPath = 0;
@@ -138,7 +126,6 @@ function discountFunction(percentage) {
 
 const payment = discountFunction(10);
 
-
 /**
  * Write the methods inside the given objects that:
  * 1. console logs keys of the given object (please use for..in cycle)
@@ -155,9 +142,7 @@ const myObject = {
 		for (const property in myObject) {
 	call() {
 		     return("My name is " + this.name + " " + this.lastName + " and I am " + this.age + " years old. My best friend is " + this.friends[2]);
-
-		}
-
+    }
 };
 
 module.exports = {

@@ -18,8 +18,21 @@
  */
 //put your code here
 
-const person = ''; //create instance of class person
-const student = ''; //create instance of class student
+const person = {
+   "firstName": "Mary",
+   "lastName": "More",
+   "getFullName" : function() {
+    return this.firstName + ' ' + this.lastName 
+}
+}; //create instance of class person
+const student extends person {
+    constructor(grade, getGrade) {
+        this.grade = "3";
+        this.getGrade = function() {
+          return this.grade;
+  }
+ }
+ } //create instance of class student
 
 module.exports = {
     person,
