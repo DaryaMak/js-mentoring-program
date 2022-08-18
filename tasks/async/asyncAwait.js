@@ -21,9 +21,13 @@ const {
  * @returns {Promise<"Resolved! with async await">}
  * 
  */
+
 async function asyncPromiseResolve() {
-  //PLACE YOUR CODE HERE:
+  const resolved = await promiseResolve();
+  return `${resolved} with async await`;
 }
+
+asyncPromiseResolve()
 
 /**
  * TASK-2: Reject the created earlier promiseReject() promise
@@ -31,9 +35,16 @@ async function asyncPromiseResolve() {
  * and modify the message to -> Rejected! with async await
  * @returns {Promise<"Rejected! with async await">}
  */
+
 async function asyncPromiseReject() {
-  //PLACE YOUR CODE HERE:
+  try {
+    const error = await promiseReject();
+  } catch (err) {
+    return `${err} with async await`;
+   }
 }
+
+asyncPromiseReject()
 
 /**
  * TASK-3: Return the result of 3 promises: 
@@ -41,8 +52,10 @@ async function asyncPromiseReject() {
  * using async/await syntax
  * @returns 
  */
-async function asyncPromiseAll() {
-  //PLACE YOUR CODE HERE:
+ 
+ async function asyncPromiseAll() {
+  const result = await Promise.all([getDogs(), getCats(), getBirds()]);
+  return result;
 }
 
 module.exports = {

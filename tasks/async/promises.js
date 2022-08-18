@@ -6,6 +6,7 @@ const {
 	secondPromise
 } = require("./utils/utilPromises");
 
+
 /**
  * Task-1: Create a promise with the resolve state
  * Implement a promise what will be resolved with "Resolved!" string
@@ -14,8 +15,10 @@ const {
  */
 
 function promiseResolve() {
-	//PLACE YOUR CODE HERE:
+	return new Promise((resolve, reject) =>
+	resolve('Resolved!'));
 }
+
 
 /**
  * Task-2: Create a promise with the reject state
@@ -25,7 +28,8 @@ function promiseResolve() {
  */
 
 function promiseReject() {
-	//PLACE YOUR CODE HERE:
+	return new Promise((resolve, reject) => 
+	reject('Rejected!'));
 }
 
 /**
@@ -35,9 +39,15 @@ function promiseReject() {
  */
 
 function fullPromise(param) {
-	//PLACE YOUR CODE HERE:
-}
-
+	return new Promise((resolve, reject) => {
+		if (param) {
+			resolve("Resolved!");
+		  } else {
+			reject("Rejected!");
+		  }
+	  });
+	}
+	
 /**
  * Task-4: Chain two promises (firstPromise() and secondPromise()
  * from the './utils/utilPromises' file) 
@@ -45,11 +55,17 @@ function fullPromise(param) {
  * variable 'chainingResult' = 'Promises chained';
  * Please do the chaining inside of the promisesChaining function
  */
-let chainingResult = '';
+
 
 async function promisesChaining() {
-	//PLACE YOUR CODE HERE:
+	return firstPromise()
+    .then(res => {
+      chainingResult = res;
+      return secondPromise();
+    })
+    .then(res => chainingResult += ` ${res}`);
 }
+let chainingResult = '${res}';	
 
 
 /**
@@ -60,9 +76,11 @@ async function promisesChaining() {
  * hint: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all
  */
 
-async function getAnimals() {
-	//PLACE YOUR CODE HERE:
-}
+ async function getAnimals() {
+	let anmls = [];
+	return Promise.all([getDogs(), getCats(), getBirds()])
+	  .then(animals => anmls.concat(animals[0], animals[1], animals[2]));
+  }
 
 module.exports = {
 	promiseResolve,
