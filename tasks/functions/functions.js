@@ -10,7 +10,7 @@
  *
  */
 function sum(a, b) {
-
+  return a + b;
 }
 
 /**
@@ -21,33 +21,46 @@ function sum(a, b) {
  * }
  */
 function getFullName(object) {
-
+ return object.firstName + " " +  object.lastName ;
 }
+const fullName = getFullName ({
+	    firstName: "John",
+	    lastName: "Dou",
+	 });
 
 /**
  * write fuction that checks if number is odd
  * true if odd, false if even
  */
 function isOdd(n) {
-
+	return n % 2 == 0;
 }
+
 
 /**
  * write function that returns shortest of the words in the given array
  * @example
  * console.log(getShortest(["one", "two", "three"])) // one
  */
+
 function getShortest(wordArray) {
-
+	let shortest = wordArray[0];
+    for(let i = 1; i < wordArray.length; i++){
+	   if(wordArray[i].length < shortest.length){
+			   shortest = wordArray[i]; 
+		}
+	}
 }
-
 /**
  * write function that returns word google with given numbers of "o" symbols
  * @example
  * console.log(getGoogle(5)) // gooooogle
  */
-function getGoogle(n) {
 
+ function getGoogle(n) { 
+    let str0 = "o"; 
+    let str1 = "g" + str0.repeat(n) + "gle"; 
+    return str1; 
 }
 
 /**
@@ -61,9 +74,15 @@ function getGoogle(n) {
  *    age: 42
  * }
  */
-function getUser(firstName, lastName, age) {
 
+function getUser(firstName = null, lastName = null, age = null) {
+  return {
+	firstName: firstName,
+    lastName: lastName,
+	age: age
+    };
 }
+const user = getUser("John", "Dou", 42);
 
 /**
  * write function that calculates total path traveled.
@@ -71,10 +90,19 @@ function getUser(firstName, lastName, age) {
  * e.g [{direction: "Kiyv - Minsk", distance: 567}, {direction: "Kiyv - Paris", distance: 2402}]
  */
 
+const totalPath = [
+	{"direction": "Minsk-Belostok", "distance": 347},
+	{"direction": "Belostok-Warsaw", "distance": 199},
+	{"direction": "Warsaw-Katowice", "distance": 295}
+];
 function getTotalPath(path) {
-
+	let totalPath = 0;
+	for (let i = 0; i < path.length; i ++) {
+		totalPath += path.distance;
+	}
+	return totalPath;
 }
-
+  
 /**
  * write a function that will calculate a discount considering the Amount
  * and the percentage (hint: you need to use the Closure here)
@@ -88,9 +116,12 @@ function getTotalPath(path) {
  */
 
 function discountFunction(percentage) {
+    return function(amount) {
+		return amount -= amount * percentage / 100;
+	}};
 
-	return function (amount) {};
-}
+const payment = discountFunction(10);
+
 
 /**
  * Write the methods inside the given objects that:
@@ -105,11 +136,13 @@ const myObject = {
 	age: 25,
 	friends: ['Mike', 'Alan', 'Daniel'],
 	keys() {
-		//write your code here
+		for (const property in myObject) {
+			return (`${property}: ${myObject[property]}`);
+		  }
 	},
 	call() {
-		//write your code here
-	}
+		     return("My name is " + this.name + " " + this.lastName + " and I am " + this.age + " years old. My best friend is " + this.friends[2]);
+		}
 
 };
 
@@ -123,4 +156,4 @@ module.exports = {
 	getTotalPath,
 	discountFunction,
 	myObject
-};
+}
