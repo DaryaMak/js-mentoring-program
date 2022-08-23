@@ -29,10 +29,15 @@
   "dependencies": {
     "chai": "^4.2.0",
     "mocha": "^7.0.1",
-    "node-fetch": "^2.6.0",
     "sinon": "latest"
   },
   "engines": {
     "node": ">=14"
-  }
+  },
+  "main": "calculator.js",
+  "devDependencies": {
+    "node-fetch": "^2.6.0"
+  },
+  "keywords": [],
+  "author": ""
 }

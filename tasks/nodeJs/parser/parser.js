@@ -21,10 +21,28 @@
  *
  * 2. Check yourself by running "npm run test:nodejs"
  */
+const { constants } = require('buffer');
 const fs = require('fs');
 
 const jsonParser = () => {
-
+	let newDoc;
+	const result = fs.readFile('./tasks/nodeJs/parser/test.json', 'utf-8')
+	.then(result => {
+		const data = JSON.parse(result);
+		const entries = data.list.entries;
+		const names = entries.map(object => object.entry.name);
+		newDoc = names.map(name => name.replace('.html', ''));
+		const outputArray = [];
+		for (let i = 0; i < newDoc.length; i++) {
+			const obj = {};
+			obj.docId = newDoc[i];
+			outputArray.push(obj);
+		}
+		fs.writeFile('./tasks/nodeJs/parser/parsed.json', JSON.stringify(outputArray, null, 2), err => {
+			if (err) console.log(err);
+			console.log('Success');
+		})
+	})
 };
 
 module.exports = {
