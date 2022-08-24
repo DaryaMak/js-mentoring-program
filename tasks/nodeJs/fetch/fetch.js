@@ -22,8 +22,17 @@ const fs = require('fs/promises');
  * Use the fs.writeFile method inside the function
  */
 const sendRequest = async () => {
-
+	const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
+		method: "GET"
+	});
+	const responseJSON = await response.json();
+	const data  = responseJSON.filter(item => item.id < 20);
+	fs.writeFile('./tasks/nodeJs/fetch/response.json', JSON.stringify(data), err => {
+		if (err) throw err;
+		console.log('file is created');
+	});
 };
+
 
 
 module.exports = {
